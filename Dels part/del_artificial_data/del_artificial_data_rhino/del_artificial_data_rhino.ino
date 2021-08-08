@@ -26,6 +26,15 @@ void attacked(){
      Serial.println(int(g1.random()));
      Serial.println("Attacked");
 }
+void coordinates(){
+  delay(1000);
+  float latitude = random(170, 500) / 100.0;
+  float longitude = random(10000,10300)/100.0;
+  Serial.print(latitude);
+  Serial.print(",");
+  Serial.print(longitude);
+  
+}
 void setup(){
   Serial.begin(9600);
   
@@ -40,12 +49,14 @@ void loop() {
     while (inputvariable == 0)
     {
       elevated();
+      coordinates();
       if((Serial.available()) == 0){continue;}
       else{break;}
     }
     while (inputvariable == 1)
     {
       attacked();
+      coordinates();
       if((Serial.available()) == 0){continue;}
       else{break;}
     }
@@ -53,6 +64,7 @@ void loop() {
   }
   else{
     resting();
+    coordinates();
   }
 
 
